@@ -10,10 +10,8 @@ $cream-color: hsl(30, 38%, 92%);
 $white-color: hsl(0, 0%, 100%);
 $green500-color: hsl(158, 36%, 37%);
 $green700-color: hsl(158, 42%, 18%);
-$container-width: 100%;
 $breakpoint-mobile: 23.438rem;
 $breakpoint-tablet: 48rem;
-$breakpoint-desktop: 90rem;
 
 @font-face {
     font-family: "Fraunces";
@@ -92,10 +90,8 @@ a:hover, a:focus, a:focus-visible, a:focus-within {
 body {
     width: 100vw;
     background-color: $cream-color;
-
     display: flex;
     flex-direction: column;
-    justify-self: center;
     align-items: center;
 
     @media screen and (width <=$breakpoint-mobile) {
@@ -154,7 +150,7 @@ div.content {
 }
 
 .top-image {
-    width: calc(#{$container-width} + 4rem);
+    width: 21.875rem;
     margin: -2rem -2rem 0 -2rem;
 
     @media screen and (width <=$breakpoint-mobile) {
