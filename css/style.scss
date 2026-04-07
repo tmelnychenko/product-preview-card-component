@@ -1,0 +1,205 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+$font-path: "../assets/fonts";
+$black-color: hsl(212, 21%, 14%);
+$grey-color: hsl(228, 12%, 48%);
+$cream-color: hsl(30, 38%, 92%);
+$white-color: hsl(0, 0%, 100%);
+$green500-color: hsl(158, 36%, 37%);
+$green700-color: hsl(158, 42%, 18%);
+$container-width: 100%;
+$breakpoint-mobile: 23.438rem;
+$breakpoint-tablet: 48rem;
+$breakpoint-desktop: 90rem;
+
+@font-face {
+    font-family: "Fraunces";
+    src: url("#{$font-path}/Fraunces/Fraunces-VariableFont_SOFT\,WONK\,opsz\,wght.ttf");
+}
+
+@font-face {
+    font-family: 'Montserrat';
+    src: url("#{$font-path}/Montserrat/Montserrat-VariableFont_wght.ttf");
+}
+
+@mixin text-preset-1 {
+    font-size: 2rem;
+    line-height: 100%;
+    font-weight: bold;
+    font-family: 'Fraunces', sans-serif;
+}
+
+@mixin text-preset-2 {
+    font-size: 0.875rem;
+    line-height: 110%;
+    font-weight: bold;
+    font-family: 'Montserrat', 'Courier New', Courier, monospace;
+}
+
+@mixin text-preset-3 {
+    font-size: 0.875rem;
+    line-height: 160%;
+    font-family: 'Montserrat', 'Courier New', Courier, monospace;
+}
+
+@mixin text-preset-4 {
+    font-size: 0.75rem;
+    line-height: 120%;
+    letter-spacing: 0.3125rem;
+    font-family: 'Montserrat', 'Courier New', Courier, monospace;
+    color: $grey-color;
+}
+
+@mixin text-preset-5 {
+    font-size: 0.8125rem;
+    line-height: 120%;
+    font-family: 'Montserrat', 'Courier New', Courier, monospace;
+    text-decoration: line-through;
+}
+
+@mixin add-to-card($isHover: false) {
+    @if $isHover {
+        background-color: $green500-color;
+    }
+
+    @else {
+        background-color: $green700-color;
+    }
+
+    color: $white-color;
+    padding: 1rem 2rem;
+    border-radius: 0.5rem;
+    width: 100%;
+    max-height: 3.125rem;
+    border: none;
+    text-decoration: none;
+    display: flex;
+    gap: 0.5rem;
+    @include text-preset-2;
+}
+
+a {
+    @include add-to-card(true)
+}
+
+a:hover, a:focus, a:focus-visible, a:focus-within {
+    @include add-to-card(false)
+}
+
+body {
+    width: 100vw;
+    background-color: $cream-color;
+
+    display: flex;
+    flex-direction: column;
+    justify-self: center;
+    align-items: center;
+
+    @media screen and (width <=$breakpoint-mobile) {
+        padding-top: 5rem;
+    }
+
+    @media screen and (width > $breakpoint-mobile) {
+        padding-top: 17.906rem;
+    }
+
+}
+
+header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1.5rem;
+    margin: 0;
+}
+
+p {
+    margin: 0;
+}
+
+section {
+    display: flex;
+}
+
+div.content {
+    display: flex;
+    flex-direction: column;
+
+    @media screen and (width > $breakpoint-mobile) {
+        max-width: 14.75rem;
+    }
+}
+
+.card {
+    display: grid;
+    box-sizing: border-box;
+    background-color: $white-color;
+    border-radius: 0.5rem;
+    padding: 2rem;
+    gap: 1.5rem;
+
+    @media screen and (width <=$breakpoint-mobile) {
+        max-width: 21.875rem;
+        grid-template-columns: auto;
+    }
+
+    @media screen and (width > $breakpoint-mobile) {
+        width: 37.5rem;
+        height: 29rem;
+        grid-template-columns: 50% auto;
+    }
+}
+
+.top-image {
+    width: calc(#{$container-width} + 4rem);
+    margin: -2rem -2rem 0 -2rem;
+
+    @media screen and (width <=$breakpoint-mobile) {
+        border-radius: 0.5rem 0.5rem 0 0;
+    }
+
+    @media screen and (width > $breakpoint-mobile) {
+        max-width: 18.75rem;
+        height: 29rem;
+        border-radius: 0.5rem 0 0 0.5rem;
+    }
+}
+
+.perfume-type {
+    text-transform: uppercase;
+    @include text-preset-4;
+}
+
+.perfume-name {
+    @include text-preset-1;
+    color: $black-color;
+    margin: 0;
+}
+
+.perfume-description {
+    @include text-preset-3;
+    color: $grey-color;
+}
+
+.price {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+.discounted-price {
+    @include text-preset-1;
+    color: $green500-color;
+}
+
+.normal-price {
+    @include text-preset-5;
+    color: $grey-color;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
